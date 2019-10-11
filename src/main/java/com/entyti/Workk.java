@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,8 +28,9 @@ public class Workk implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_work")
-    private String idWork;
+    private Integer idWork;
     @Column(name = "work_name")
     private String workName;
     @Column(name = "statuss")
@@ -44,15 +47,15 @@ public class Workk implements Serializable {
     public Workk() {
     }
 
-    public Workk(String idWork) {
+    public Workk(Integer idWork) {
         this.idWork = idWork;
     }
 
-    public String getIdWork() {
+    public Integer getIdWork() {
         return idWork;
     }
 
-    public void setIdWork(String idWork) {
+    public void setIdWork(Integer idWork) {
         this.idWork = idWork;
     }
 

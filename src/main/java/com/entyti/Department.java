@@ -6,6 +6,8 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +25,9 @@ public class Department implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_department")
-    private String idDepartment;
+    private Integer idDepartment;
     @Column(name = "department_name")
     private String departmentName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
@@ -38,15 +41,15 @@ public class Department implements Serializable {
     public Department() {
     }
 
-    public Department(String idDepartment) {
+    public Department(Integer idDepartment) {
         this.idDepartment = idDepartment;
     }
 
-    public String getIdDepartment() {
+    public Integer getIdDepartment() {
         return idDepartment;
     }
 
-    public void setIdDepartment(String idDepartment) {
+    public void setIdDepartment(Integer idDepartment) {
         this.idDepartment = idDepartment;
     }
 

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,8 +28,9 @@ public class Opportunity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_opportunity")
-    private String idOpportunity;
+    private Integer idOpportunity;
     @NotNull
     @Column(name = "cus_name")
     private String cusName;
@@ -60,20 +63,20 @@ public class Opportunity implements Serializable {
     public Opportunity() {
     }
 
-    public Opportunity(String idOpportunity) {
+    public Opportunity(Integer idOpportunity) {
         this.idOpportunity = idOpportunity;
     }
 
-    public Opportunity(String idOpportunity, String cusName) {
+    public Opportunity(Integer idOpportunity, String cusName) {
         this.idOpportunity = idOpportunity;
         this.cusName = cusName;
     }
 
-    public String getIdOpportunity() {
+    public Integer getIdOpportunity() {
         return idOpportunity;
     }
 
-    public void setIdOpportunity(String idOpportunity) {
+    public void setIdOpportunity(Integer idOpportunity) {
         this.idOpportunity = idOpportunity;
     }
 
