@@ -2,10 +2,12 @@ package com.entyti;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,18 +26,22 @@ public class Department implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_department")
     private Integer idDepartment;
     @Column(name = "department_name")
     private String departmentName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
-    private Collection<Workk> workkCollection;
-    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-    @ManyToOne
-    private Employee idEmpl;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_department")
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
+    private List<Workk> workkCollection;
+//    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
+//    @ManyToOne
+//    private Employee idEmpl;
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_department")
+   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
     private Collection<Employee> employeeCollection;
 
     public Department() {
@@ -61,27 +67,27 @@ public class Department implements Serializable {
         this.departmentName = departmentName;
     }
 
-    @XmlTransient
-    public Collection<Workk> getWorkkCollection() {
-        return workkCollection;
-    }
+//    @XmlTransient
+//    public Collection<Workk> getWorkkCollection() {
+//        return workkCollection;
+//    }
 
-    public void setWorkkCollection(Collection<Workk> workkCollection) {
+    public void setWorkkCollection(List<Workk> workkCollection) {
         this.workkCollection = workkCollection;
     }
 
-    public Employee getIdEmpl() {
-        return idEmpl;
-    }
+//    public Employee getIdEmpl() {
+//        return idEmpl;
+//    }
+//
+//    public void setIdEmpl(Employee idEmpl) {
+//        this.idEmpl = idEmpl;
+//    }
 
-    public void setIdEmpl(Employee idEmpl) {
-        this.idEmpl = idEmpl;
-    }
-
-    @XmlTransient
-    public Collection<Employee> getEmployeeCollection() {
-        return employeeCollection;
-    }
+//    @XmlTransient
+//    public Collection<Employee> getEmployeeCollection() {
+//        return employeeCollection;
+//    }
 
     public void setEmployeeCollection(Collection<Employee> employeeCollection) {
         this.employeeCollection = employeeCollection;

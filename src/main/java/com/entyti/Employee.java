@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -57,15 +58,21 @@ public class Employee implements Serializable {
     @NotNull
     @Column(name = "pass")
     private String pass;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Opportunity> opportunityCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-    private Collection<Workk> workkCollection;
-    @OneToMany(mappedBy = "idEmpl")
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Workk> workkC;
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(mappedBy = "idEmpl")
     private Collection<Department> departmentCollection;
-    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-    @ManyToOne(optional = false)
-    private Department idDepartment;
+//    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
+//    @ManyToOne(optional = false)
+//    private Department idDepartment;
 
     public Employee() {
     }
@@ -161,40 +168,40 @@ public class Employee implements Serializable {
         this.pass = pass;
     }
 
-    @XmlTransient
-    public Collection<Opportunity> getOpportunityCollection() {
-        return opportunityCollection;
-    }
+//    @XmlTransient
+//    public Collection<Opportunity> getOpportunityCollection() {
+//        return opportunityCollection;
+//    }
 
     public void setOpportunityCollection(Collection<Opportunity> opportunityCollection) {
         this.opportunityCollection = opportunityCollection;
     }
 
-    @XmlTransient
-    public Collection<Workk> getWorkkCollection() {
-        return workkCollection;
-    }
+//    @XmlTransient
+//    public Collection<Workk> getWorkkCollection() {
+//        return workkC;
+//    }
 
     public void setWorkkCollection(Collection<Workk> workkCollection) {
-        this.workkCollection = workkCollection;
+        this.workkC = workkCollection;
     }
 
-    @XmlTransient
-    public Collection<Department> getDepartmentCollection() {
-        return departmentCollection;
-    }
+//    @XmlTransient
+//    public Collection<Department> getDepartmentCollection() {
+//        return departmentCollection;
+//    }
 
     public void setDepartmentCollection(Collection<Department> departmentCollection) {
         this.departmentCollection = departmentCollection;
     }
 
-    public Department getIdDepartment() {
-        return idDepartment;
-    }
-
-    public void setIdDepartment(Department idDepartment) {
-        this.idDepartment = idDepartment;
-    }
+//    public Department getIdDepartment() {
+//        return idDepartment;
+//    }
+//
+//    public void setIdDepartment(Department idDepartment) {
+//        this.idDepartment = idDepartment;
+//    }
 
     @Override
     public int hashCode() {

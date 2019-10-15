@@ -27,7 +27,6 @@ public class Workk implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_work")
     private Integer idWork;
@@ -37,12 +36,12 @@ public class Workk implements Serializable {
     private Boolean statuss;
     @Column(name = "prioritize")
     private String prioritize;
-    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-    @ManyToOne(optional = false)
-    private Department idDepartment;
     @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
     @ManyToOne(optional = false)
     private Employee idEmpl;
+    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
+    @ManyToOne(optional = false)
+    private Department idDepartment;
 
     public Workk() {
     }
