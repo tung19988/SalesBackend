@@ -39,9 +39,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	@Override
-	public void delete(Department de) {
+	public void deleteByID(int id) {
 		// TODO Auto-generated method stub
-		departRespons.delete(de);
+		departRespons.deleteById(id);
 	}
 
 }
