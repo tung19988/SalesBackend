@@ -40,8 +40,8 @@ public class Employee implements Serializable {
     private String nameEmpl;
     @Column(name = "phone_num")
     private Integer phoneNum;
-    @Column(name = "levell")
-    private String levell;
+//    @Column(name = "levell")
+//    private String levell;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Column(name = "email")
     private String email;
@@ -111,13 +111,13 @@ public class Employee implements Serializable {
         this.phoneNum = phoneNum;
     }
 
-    public String getLevell() {
-        return levell;
-    }
-
-    public void setLevell(String levell) {
-        this.levell = levell;
-    }
+//    public String getLevell() {
+//        return levell;
+//    }
+//
+//    public void setLevell(String levell) {
+//        this.levell = levell;
+//    }
 
     public String getEmail() {
         return email;
