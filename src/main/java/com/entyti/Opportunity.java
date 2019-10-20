@@ -1,9 +1,13 @@
 package com.entyti;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -59,6 +64,12 @@ public class Opportunity implements Serializable {
     @ManyToOne(optional = false)
     private Employee idEmpl;
 
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_com")
+
+    private List<Commentt> commCollection;
+    
+    
     public Opportunity() {
     }
 
@@ -134,8 +145,13 @@ public class Opportunity implements Serializable {
     public void setDateOfPurchase(String dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
+    
 
-    public String getDelivery() {
+	public void setCommCollection(List<Commentt> commCollection) {
+		this.commCollection = commCollection;
+	}
+
+	public String getDelivery() {
         return delivery;
     }
 

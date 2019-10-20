@@ -2,7 +2,6 @@ package com.entyti;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,15 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
@@ -40,8 +35,8 @@ public class Employee implements Serializable {
     private String nameEmpl;
     @Column(name = "phone_num")
     private Integer phoneNum;
-    @Column(name = "levell")
-    private String levell;
+//    @Column(name = "levell")
+//    private String levell;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Column(name = "email")
     private String email;
@@ -65,10 +60,10 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Workk> workkC;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
-    private Collection<Department> departmentCollection;
+//    private Collection<Department> departmentCollection;
 //    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
 //    @ManyToOne(optional = false)
 //    private Department idDepartment;
@@ -111,13 +106,13 @@ public class Employee implements Serializable {
         this.phoneNum = phoneNum;
     }
 
-    public String getLevell() {
-        return levell;
-    }
-
-    public void setLevell(String levell) {
-        this.levell = levell;
-    }
+//    public String getLevell() {
+//        return levell;
+//    }
+//
+//    public void setLevell(String levell) {
+//        this.levell = levell;
+//    }
 
     public String getEmail() {
         return email;
@@ -190,9 +185,9 @@ public class Employee implements Serializable {
 //        return departmentCollection;
 //    }
 
-    public void setDepartmentCollection(Collection<Department> departmentCollection) {
-        this.departmentCollection = departmentCollection;
-    }
+//    public void setDepartmentCollection(Collection<Department> departmentCollection) {
+//        this.departmentCollection = departmentCollection;
+//    }
 
 //    public Department getIdDepartment() {
 //        return idDepartment;
