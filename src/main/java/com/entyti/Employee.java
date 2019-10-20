@@ -2,7 +2,6 @@ package com.entyti;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,15 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
@@ -65,10 +60,10 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Workk> workkC;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
-    private Collection<Department> departmentCollection;
+//    private Collection<Department> departmentCollection;
 //    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
 //    @ManyToOne(optional = false)
 //    private Department idDepartment;
@@ -190,9 +185,9 @@ public class Employee implements Serializable {
 //        return departmentCollection;
 //    }
 
-    public void setDepartmentCollection(Collection<Department> departmentCollection) {
-        this.departmentCollection = departmentCollection;
-    }
+//    public void setDepartmentCollection(Collection<Department> departmentCollection) {
+//        this.departmentCollection = departmentCollection;
+//    }
 
 //    public Department getIdDepartment() {
 //        return idDepartment;
