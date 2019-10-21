@@ -25,9 +25,9 @@ public class Customer {
     @Column(name = "user_cus")
     private String  userCus;
     @Column(name = "  pass_cus")
-    private String  content;
-    @Column(name = "content")
     private String  passCus;
+    @Column(name = "content")
+    private String  content; 
 	public Integer getIdCus() {
 		return idCus;
 	}

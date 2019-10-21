@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.dao.CustomerDaoImpl;
+import com.dao.WorkkDaoImpl;
+import com.entyti.Customer;
 import com.entyti.Workk;
 import com.service.WorkkRepository;
 import org.slf4j.Logger;
@@ -54,4 +56,9 @@ public class WorkkApi {
 	            return ResponseEntity.ok().build();
 	        }).orElse(ResponseEntity.notFound().build());
 	}
+  @RequestMapping(value = "/w/list1", method = RequestMethod.GET)
+  public List<Workk> listEmpl() {
+  	List<Workk> theEmployees= new WorkkDaoImpl().find();
+  	return theEmployees;
+  	}
 }

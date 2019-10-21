@@ -6,6 +6,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.entyti.Customer;
+import com.entyti.Decentraliza;
 import com.entyti.Department;
 import com.entyti.Employee;
 import com.entyti.Opportunity;
@@ -35,6 +37,8 @@ public class HibernateUtil {
 	                configuration.addAnnotatedClass(Opportunity.class);
 	                configuration.addAnnotatedClass(Employee.class);
 	                configuration.addAnnotatedClass(Department.class);
+	                configuration.addAnnotatedClass(Decentraliza.class);
+	                configuration.addAnnotatedClass(Customer.class);
 	                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 	                    .applySettings(configuration.getProperties()).build();
 	                sessionFactory = configuration.buildSessionFactory(serviceRegistry);

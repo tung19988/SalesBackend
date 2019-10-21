@@ -7,8 +7,8 @@ import com.entyti.Workk;
 
 
 public interface WorkkDao {
-	public List<Workk> findAll();
-	public Optional<Workk> findById(int theId);
-	public void save(Workk theWorkk);
-	public void deleteById(int theId);
+	public List<Workk> find();
+//	public Optional<Workk> findById(int theId);
+//	public void save(Workk theWorkk);
+//	public void deleteById(int theId);
 }

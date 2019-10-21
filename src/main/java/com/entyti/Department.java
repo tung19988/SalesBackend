@@ -39,14 +39,19 @@ public class Department implements Serializable {
 //    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
 //    @ManyToOne
 //    private Employee idEmpl;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_department")
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_department")
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
-    private Collection<Employee> employeeCollection;
-
+//    private Collection<Employee> employeeCollection;
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Decentraliza> dec;
     public Department() {
     }
-
+    public void setDec(Collection<Decentraliza> dec) {
+		this.dec = dec;
+	}
     public Department(Integer idDepartment) {
         this.idDepartment = idDepartment;
     }
@@ -89,9 +94,9 @@ public class Department implements Serializable {
 //        return employeeCollection;
 //    }
 
-    public void setEmployeeCollection(Collection<Employee> employeeCollection) {
-        this.employeeCollection = employeeCollection;
-    }
+//    public void setEmployeeCollection(Collection<Employee> employeeCollection) {
+//        this.employeeCollection = employeeCollection;
+//    }
 
     @Override
     public int hashCode() {

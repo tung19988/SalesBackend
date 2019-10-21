@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dao.CustomerDaoImpl;
+
 import com.entyti.Customer;
 import com.entyti.Opportunity;
 import com.service.CustomerRepository;
+
 
 
 @RestController
@@ -47,5 +50,11 @@ public ResponseEntity<?> deleteid(@PathVariable("id") Integer id) {
 	    	cus.deleteById(id);
 	            return ResponseEntity.ok().build();
 	        }).orElse(ResponseEntity.notFound().build());
+	}
+
+@RequestMapping(value = "/list1", method = RequestMethod.GET)
+public List<Customer> listEmpl() {
+	List<Customer> theEmployees= new CustomerDaoImpl().find();
+	return theEmployees;
 	}
 }
