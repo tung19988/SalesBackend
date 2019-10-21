@@ -12,12 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlTransient;
-
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "department")
@@ -38,15 +34,32 @@ public class Department implements Serializable {
     private List<Workk> workkCollection;
 //    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
 //    @ManyToOne
+
 //    private Employee idEmpl;
+
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
+//    private List<Employee> employeeC;
+    
+//    public List<Employee> getEmployeeC() {
+//		return employeeC;
+//	}
+//
+//	public void setEmployeeC(List<Employee> employeeC) {
+//		this.employeeC = employeeC;
+//	}
+
+	//    private Employee idEmpl;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_department")
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
 //    private Collection<Employee> employeeCollection;
+
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Decentraliza> dec;
+
     public Department() {
     }
     public void setDec(Collection<Decentraliza> dec) {
