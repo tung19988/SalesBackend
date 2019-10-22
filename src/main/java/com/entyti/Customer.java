@@ -24,10 +24,10 @@ public class Customer {
     private String stt;
     @Column(name = "user_cus")
     private String  userCus;
-    @Column(name = "  pass_cus")
-    private String  passCus;
     @Column(name = "content")
-    private String  content; 
+    private String  content;
+    @Column(name = "pass_cus")
+    private String  passCus;
 	public Integer getIdCus() {
 		return idCus;
 	}

@@ -49,6 +49,10 @@ public class Employee implements Serializable {
     @NotNull
     @Column(name = "userr")
     private String userr;
+    @Column(name = "commentt")
+    private String commentt;
+    @Column(name = "icon")
+    private String icon;
     @NotNull
     @Column(name = "pass")
     private String pass;
@@ -78,11 +82,13 @@ public class Employee implements Serializable {
         this.idEmpl = idEmpl;
     }
 
-    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass) {
+    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass, String cmt, String icon ) {
         this.idEmpl = idEmpl;
         this.nameEmpl = nameEmpl;
         this.userr = userr;
         this.pass = pass;
+        this.commentt = cmt;
+        this.icon = icon;
     }
 
     public Integer getIdEmpl() {
@@ -117,11 +123,28 @@ public class Employee implements Serializable {
 //        this.levell = levell;
 //    }
 
+    
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public String getCommentt() {
+		return commentt;
+	}
+
+	public void setCommentt(String commentt) {
+		this.commentt = commentt;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public void setEmail(String email) {
         this.email = email;
     }
 
