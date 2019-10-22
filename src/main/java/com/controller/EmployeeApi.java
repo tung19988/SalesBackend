@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dao.EmployeeDao;
 import com.entyti.Employee;
 import com.service.EmployeeRepository;
 
@@ -20,6 +21,9 @@ public class EmployeeApi {
 
 	 @Autowired
 	  EmployeeRepository empl;
+	 
+	 @Autowired
+	 EmployeeDao emplDao;
 	  
 	  @RequestMapping(value = "/Employee/list", method = RequestMethod.GET)
 		public List<Employee> list() {	  
@@ -45,4 +49,9 @@ public class EmployeeApi {
 		            return ResponseEntity.ok().build();
 		        }).orElse(ResponseEntity.notFound().build());
 		}
+	  
+	  @RequestMapping(value = "/Emp/list", method = RequestMethod.GET)
+	  public List<Employee> find() {	  
+			return emplDao.findAll();
+	}
 }

@@ -1,13 +1,11 @@
 package com.entyti;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-=======
->>>>>>> 7d26cc17974ee63a2ae7796aa054c12bda27ae5f
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,12 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-<<<<<<< HEAD
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-=======
->>>>>>> 7d26cc17974ee63a2ae7796aa054c12bda27ae5f
+
 import javax.persistence.Table;
 import javax.swing.Spring;
 import javax.validation.constraints.NotNull;
@@ -69,7 +65,7 @@ public class Opportunity implements Serializable {
 	@JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
     @ManyToOne(optional = false)
     private Employee idEmpl;
-<<<<<<< HEAD
+
 
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_com")
@@ -77,7 +73,7 @@ public class Opportunity implements Serializable {
     private List<Commentt> commCollection;
     
     
-=======
+
 	
 	public String getShopName() {
 		return shopName;
@@ -86,7 +82,7 @@ public class Opportunity implements Serializable {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
->>>>>>> 7d26cc17974ee63a2ae7796aa054c12bda27ae5f
+
     public Opportunity() {
     }
 
