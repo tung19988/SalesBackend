@@ -8,8 +8,6 @@ import com.entyti.Customer;
 
 
 public interface CustomerDao {
-	public List<Customer> findAll();
-	public Optional<Customer> findById(int theId);
-	public void save(Customer theCustomer);
-	public void deleteById(int theId);
+	public List<Customer> find();
+	
 }

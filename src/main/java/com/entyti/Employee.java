@@ -71,7 +71,10 @@ public class Employee implements Serializable {
 //    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
 //    @ManyToOne(optional = false)
 //    private Department idDepartment;
-
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Decentraliza> dec;
     public Employee() {
     }
 
@@ -220,7 +223,15 @@ public class Employee implements Serializable {
 //        this.idDepartment = idDepartment;
 //    }
 
-    @Override
+//    public Collection<Decentraliza> getDec() {
+//		return dec;
+//	}
+
+	public void setDec(Collection<Decentraliza> dec) {
+		this.dec = dec;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idEmpl != null ? idEmpl.hashCode() : 0);
