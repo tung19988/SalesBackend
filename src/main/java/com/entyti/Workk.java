@@ -1,9 +1,13 @@
 package com.entyti;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -42,14 +47,24 @@ public class Workk implements Serializable {
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(optional = false)
     private Department idDepartment;
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Collection<DecWork> iddw;
 
-    public Workk() {
+
+	public void setIddw(Collection<DecWork> iddw) {
+		this.iddw = iddw;
+	}
+
+	public Workk() {
     }
-
+	
     public Workk(Integer idWork) {
-        this.idWork = idWork;
-    }
+		super();
+		this.idWork = idWork;
+	}
 
+	
     public Integer getIdWork() {
         return idWork;
     }

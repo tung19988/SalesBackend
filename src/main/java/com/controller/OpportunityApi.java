@@ -46,4 +46,9 @@ public class OpportunityApi {
 		            return ResponseEntity.ok().build();
 		        }).orElse(ResponseEntity.notFound().build());
 		}
+	 
+	 @RequestMapping(value = "/oppor/list/{stt}", method = RequestMethod.GET)
+	  public Optional<Integer> getById(@PathVariable(value = "stt") String stt) {
+	      return opp.selectStt(stt); 
+	  }
 }

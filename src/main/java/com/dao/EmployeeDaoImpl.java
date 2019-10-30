@@ -29,7 +29,7 @@ private EmployeeRepository empRespons;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
 	      session.beginTransaction();
-	      String hql = "FROM Workk c WHERE c.idWork='1'";
+	      String hql = " SELECT d.level FROM Employee e , Decentraliza d WHERE e.idEmpl=d.idEmpl";
 	      Query query = session.createQuery(hql);
 	      List results = query.list();
 //	      List list = session.createQuery("from Employee where id= 1").list();

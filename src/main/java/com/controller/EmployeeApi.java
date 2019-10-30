@@ -50,8 +50,8 @@ public class EmployeeApi {
 		        }).orElse(ResponseEntity.notFound().build());
 		}
 	  
-	  @RequestMapping(value = "/Emp/list", method = RequestMethod.GET)
-	  public List<Employee> find() {	  
-			return emplDao.findAll();
+	  @RequestMapping(value = "/Emp/list/{name}", method = RequestMethod.GET)
+	  public List<Employee> find(@PathVariable("name") String name) {	  
+			return empl.nameE(name);
 	}
 }

@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.entyti.Commentt;
 import com.entyti.Customer;
 import com.entyti.Decentraliza;
 import com.entyti.Department;
@@ -34,6 +35,7 @@ public class HibernateUtil {
 
 	                configuration.setProperties(settings);
 	                configuration.addAnnotatedClass(Workk.class);
+	                configuration.addAnnotatedClass(Commentt.class);
 	                configuration.addAnnotatedClass(Opportunity.class);
 	                configuration.addAnnotatedClass(Employee.class);
 	                configuration.addAnnotatedClass(Department.class);
