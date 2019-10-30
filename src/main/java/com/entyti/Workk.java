@@ -1,7 +1,11 @@
 package com.entyti;
 
 import java.io.Serializable;
+
 import java.util.List;
+
+import java.util.Collection;
+
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -47,7 +51,7 @@ public class Workk implements Serializable {
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(optional = false)
     private Department idDepartment;
-    
+
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id")
     private List<Emp_work> id;
@@ -85,9 +89,27 @@ public class Workk implements Serializable {
 	}
 
 	public Workk(Integer idWork) {
-        this.idWork = idWork;
-    }
+        this.idWork = idWork;}
 
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Collection<DecWork> iddw;
+
+
+	public void setIddw(Collection<DecWork> iddw) {
+		this.iddw = iddw;
+	}
+
+//	public Workk() {
+//
+//    }
+//	
+//    public Workk(Integer idWork) {
+//		super();
+//		this.idWork = idWork;
+//	}
+
+	
     public Integer getIdWork() {
         return idWork;
     }

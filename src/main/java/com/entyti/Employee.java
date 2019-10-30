@@ -73,6 +73,7 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Decentraliza> dec;
+
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_com")
     private List<Comment_emp> commCollection;
@@ -99,10 +100,26 @@ public class Employee implements Serializable {
 	}
 
 	public Employee() {
-    }
+	}
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Note> noteCollection;
+//    public Employee() {
+//
+//    }
 
     public Employee(Integer idEmpl) {
         this.idEmpl = idEmpl;
+    }
+
+
+    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass ) {
+        this.idEmpl = idEmpl;
+        this.nameEmpl = nameEmpl;
+        this.userr = userr;
+        this.pass = pass;
     }
 
 
@@ -159,11 +176,12 @@ public class Employee implements Serializable {
 //        this.levell = levell;
 //    }
 
+    
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+	public void setEmail(String email) {
         this.email = email;
     }
 
@@ -224,6 +242,8 @@ public class Employee implements Serializable {
     public void setWorkkCollection(List<Workk> workkCollection) {
         this.workkC = workkCollection;
     }
+    
+    
 
 //    @XmlTransient
 //    public Collection<Department> getDepartmentCollection() {
@@ -245,6 +265,10 @@ public class Employee implements Serializable {
 //    public Collection<Decentraliza> getDec() {
 //		return dec;
 //	}
+
+	public void setNoteCollection(Collection<Note> noteCollection) {
+		this.noteCollection = noteCollection;
+	}
 
 	public void setDec(Collection<Decentraliza> dec) {
 		this.dec = dec;

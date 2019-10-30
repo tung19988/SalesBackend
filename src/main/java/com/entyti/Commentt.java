@@ -49,6 +49,7 @@ public class Commentt implements Serializable {
 			super();
 		}
 		
+
 		
 		public String getAppointmentTime() {
 			return appointmentTime;
@@ -78,6 +79,7 @@ public class Commentt implements Serializable {
 		public void setDatee(String datee) {
 			this.datee = datee;
 		}
+
 
 
 		public Commentt(Integer idComment, String note, Opportunity idOppo) {

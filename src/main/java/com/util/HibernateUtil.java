@@ -36,6 +36,7 @@ public class HibernateUtil {
 	                configuration.setProperties(settings);
 	                configuration.addAnnotatedClass(Commentt.class);
 	                configuration.addAnnotatedClass(Workk.class);
+	                configuration.addAnnotatedClass(Commentt.class);
 	                configuration.addAnnotatedClass(Opportunity.class);
 	                configuration.addAnnotatedClass(Employee.class);
 	                configuration.addAnnotatedClass(Department.class);

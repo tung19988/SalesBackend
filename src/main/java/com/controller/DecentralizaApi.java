@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dao.DecentralizaDao;
+import com.dao.EmployeeDao;
 import com.entyti.Decentraliza;
+import com.entyti.Employee;
 import com.entyti.Opportunity;
 import com.service.DecentralizaRepository;
 
@@ -21,6 +24,9 @@ import com.service.DecentralizaRepository;
 public class DecentralizaApi {
 @Autowired
 DecentralizaRepository de;
+
+@Autowired
+DecentralizaDao deDao;
 
 @RequestMapping(value = "/dec/list", method = RequestMethod.GET)
 	public List<Decentraliza> listde(){
@@ -45,4 +51,9 @@ public ResponseEntity<?> deleteid(@PathVariable("id") Integer id) {
 	            return ResponseEntity.ok().build();
 	        }).orElse(ResponseEntity.notFound().build());
 	}
+
+@RequestMapping(value = "/dece/list", method = RequestMethod.GET)
+public List<Decentraliza> find() {	  
+		return deDao.find();
+}
 }

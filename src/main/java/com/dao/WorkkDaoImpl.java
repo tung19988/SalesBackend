@@ -15,7 +15,11 @@ public class WorkkDaoImpl implements WorkkDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 //		try {
 			session.beginTransaction();
+
 			String hql = "SELECT statuss,prioritize,idDepartment FROM Workk  Where idWork= :idWork";
+
+//			String hql = "FROM Workk c WHERE c.workName='c'";
+
 			Query query = session.createQuery(hql);
 		
 //			List list = session.createQuery("from Employee where id= 1").list();
