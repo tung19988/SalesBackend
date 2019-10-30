@@ -10,39 +10,36 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "commentt")
-public class Commentt implements Serializable {
+@Table(name = "note")
+public class Note implements Serializable {
 	 private static final long serialVersionUID = 1L;
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id_com")
-	    private Integer idComment;
+	    @Column(name = "id_note")
+	    private Integer idNote;
+	    @NotNull
 	    @Column(name = "note")
 	    private String note;
+	    @Column(name = "datee")
+	    private String date;
 	    
-	    @JoinColumn(name = "id_opportunity", referencedColumnName = "id_opportunity")
+	    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
 	    @ManyToOne(optional = false)
-	    private Opportunity idOppo;
+	    private Employee idEmpl;
 
-		public Commentt() {
+		public Note() {
 			super();
 		}
-		
-		public Commentt(Integer idComment, String note, Opportunity idOppo) {
-			super();
-			this.idComment = idComment;
-			this.note = note;
-			this.idOppo = idOppo;
+
+		public Integer getIdNote() {
+			return idNote;
 		}
 
-		public Integer getIdComment() {
-			return idComment;
-		}
-
-		public void setIdComment(Integer idComment) {
-			this.idComment = idComment;
+		public void setIdNote(Integer idNote) {
+			this.idNote = idNote;
 		}
 
 		public String getNote() {
@@ -53,12 +50,20 @@ public class Commentt implements Serializable {
 			this.note = note;
 		}
 
-		public Opportunity getIdOppo() {
-			return idOppo;
+		public String getDate() {
+			return date;
 		}
 
-		public void setIdOppo(Opportunity idOppo) {
-			this.idOppo = idOppo;
+		public void setDate(String date) {
+			this.date = date;
+		}
+
+		public Employee getIdEmpl() {
+			return idEmpl;
+		}
+
+		public void setIdEmpl(Employee idEmpl) {
+			this.idEmpl = idEmpl;
 		}
 
 		public static long getSerialversionuid() {
@@ -67,8 +72,8 @@ public class Commentt implements Serializable {
 
 		@Override
 		public String toString() {
-			return "Commentt [idComment=" + idComment + ", note=" + note + ", idOppo=" + idOppo + "]";
+			return "Note [idNote=" + idNote + ", note=" + note + ", date=" + date + ", idEmpl=" + idEmpl + "]";
 		}
-
+	    
 	    
 }

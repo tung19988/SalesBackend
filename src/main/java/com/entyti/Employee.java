@@ -49,10 +49,6 @@ public class Employee implements Serializable {
     @NotNull
     @Column(name = "userr")
     private String userr;
-    @Column(name = "commentt")
-    private String commentt;
-    @Column(name = "icon")
-    private String icon;
     @NotNull
     @Column(name = "pass")
     private String pass;
@@ -75,6 +71,11 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Decentraliza> dec;
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_empl")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Note> noteCollection;
     public Employee() {
     }
 
@@ -82,13 +83,11 @@ public class Employee implements Serializable {
         this.idEmpl = idEmpl;
     }
 
-    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass, String cmt, String icon ) {
+    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass ) {
         this.idEmpl = idEmpl;
         this.nameEmpl = nameEmpl;
         this.userr = userr;
         this.pass = pass;
-        this.commentt = cmt;
-        this.icon = icon;
     }
 
     public Integer getIdEmpl() {
@@ -127,22 +126,6 @@ public class Employee implements Serializable {
     public String getEmail() {
         return email;
     }
-
-    public String getCommentt() {
-		return commentt;
-	}
-
-	public void setCommentt(String commentt) {
-		this.commentt = commentt;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
 
 	public void setEmail(String email) {
         this.email = email;
@@ -205,6 +188,8 @@ public class Employee implements Serializable {
     public void setWorkkCollection(Collection<Workk> workkCollection) {
         this.workkC = workkCollection;
     }
+    
+    
 
 //    @XmlTransient
 //    public Collection<Department> getDepartmentCollection() {
@@ -226,6 +211,10 @@ public class Employee implements Serializable {
 //    public Collection<Decentraliza> getDec() {
 //		return dec;
 //	}
+
+	public void setNoteCollection(Collection<Note> noteCollection) {
+		this.noteCollection = noteCollection;
+	}
 
 	public void setDec(Collection<Decentraliza> dec) {
 		this.dec = dec;

@@ -1,27 +1,23 @@
 package com.dao;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.entyti.Customer;
-import com.entyti.Workk;
-import com.service.WorkkRepository;
+import com.entyti.Decentraliza;
 import com.util.HibernateUtil;
 
-public class WorkkDaoImpl implements WorkkDao {
+@Service
+public class DecentralizaDaoImpl implements DecentralizaDao {
 
-	public List<Workk> find() {
-		// TODO Auto-generated method stub
+	@Override
+	public List<Decentraliza> find() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			String hql = "FROM Workk c WHERE c.workName='c'";
+			String hql = "SELECT e.userr, d.levell FROM Employee e , Decentraliza d WHERE e.idEmpl=d.idEmpl";
 			Query query = session.createQuery(hql);
 			List results = query.list();
 //			List list = session.createQuery("from Employee where id= 1").list();
@@ -36,5 +32,6 @@ public class WorkkDaoImpl implements WorkkDao {
 		return null;
 	}
 
+	
 
 }

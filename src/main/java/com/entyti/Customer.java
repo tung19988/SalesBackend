@@ -1,10 +1,17 @@
 package com.entyti;
 
+import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +35,27 @@ public class Customer {
     private String  content;
     @Column(name = "pass_cus")
     private String  passCus;
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_comcus")
+    private Collection<CommentCus> idCommcus;
+    
+     
+//	public List<CommentCus> getCommCollection() {
+//		return commCollection;
+//	}
+//	public void setCommCollection(List<CommentCus> commCollection) {
+//		this.commCollection = commCollection;
+//	}
+    
 	public Integer getIdCus() {
 		return idCus;
+	}
+//	public List<CommentCus> getIdCommcus() {
+//		return idCommcus;
+//	}
+	public void setIdCommcus(Collection<CommentCus> idCommcus) {
+		this.idCommcus = idCommcus;
 	}
 	public void setIdCus(Integer idCus) {
 		this.idCus = idCus;
@@ -78,9 +104,11 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [idCus=" + idCus + ", nameCus=" + nameCus + ", phoneNum=" + phoneNum + ", email=" + email
-				+ ", stt=" + stt + ", userCus=" + userCus + ", content=" + content + ", passCus=" + passCus + "]";
+		return "Customer [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
+
+
 	
     
     
