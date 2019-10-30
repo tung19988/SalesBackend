@@ -1,9 +1,13 @@
 package com.entyti;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -42,11 +47,44 @@ public class Workk implements Serializable {
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(optional = false)
     private Department idDepartment;
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private List<Emp_work> id;
 
     public Workk() {
     }
+    
+    
+//    public List<Emp_work> getId() {
+//		return id;
+//	}
 
-    public Workk(Integer idWork) {
+
+	public void setId(List<Emp_work> id) {
+		this.id = id;
+	}
+
+
+	public Workk(Integer idWork, String workName, Boolean statuss, String prioritize, Employee idEmpl,
+			Department idDepartment, List<Emp_work> id) {
+		super();
+		this.idWork = idWork;
+		this.workName = workName;
+		this.statuss = statuss;
+		this.prioritize = prioritize;
+		this.idEmpl = idEmpl;
+		this.idDepartment = idDepartment;
+		this.id = id;
+	}
+
+
+	public Workk(Employee idEmpl) {
+		super();
+		this.idEmpl = idEmpl;
+	}
+
+	public Workk(Integer idWork) {
         this.idWork = idWork;
     }
 

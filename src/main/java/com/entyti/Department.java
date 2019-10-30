@@ -56,7 +56,7 @@ public class Department implements Serializable {
 //    private Collection<Employee> employeeCollection;
 
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
+    @JoinColumn(name="id_department")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Decentraliza> dec;
 

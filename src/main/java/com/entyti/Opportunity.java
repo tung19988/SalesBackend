@@ -65,6 +65,8 @@ public class Opportunity implements Serializable {
     private Double totalMoney;
     @Column(name = "shop_name")
     private String shopName;
+//    @ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    @JoinColumn(name="id_empl")
 	@JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
     @ManyToOne(optional = false)
     private Employee idEmpl;
@@ -89,12 +91,11 @@ public class Opportunity implements Serializable {
     public Opportunity() {
     }
 
-    @Override
+   
+
+	@Override
 	public String toString() {
-		return "Opportunity [idOpportunity=" + idOpportunity + ", cusName=" + cusName + ", email=" + email
-				+ ", phoneNum=" + phoneNum + ", proName=" + proName + ", amountt=" + amountt + ", price=" + price
-				+ ", dateOfPurchase=" + dateOfPurchase + ", delivery=" + delivery + ", sources=" + sources + ", stt="
-				+ stt + ", totalMoney=" + totalMoney + ", idEmpl=" + idEmpl + "]";
+		return "Opportunity [getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
 	}
 
 	public Opportunity(Integer idOpportunity) {

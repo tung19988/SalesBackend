@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dao.CustomerDaoImpl;
@@ -56,9 +58,13 @@ public class WorkkApi {
 	            return ResponseEntity.ok().build();
 	        }).orElse(ResponseEntity.notFound().build());
 	}
-  @RequestMapping(value = "/w/list1", method = RequestMethod.GET)
-  public List<Workk> listEmpl() {
-  	List<Workk> theEmployees= new WorkkDaoImpl().find();
-  	return theEmployees;
-  	}
+  @RequestMapping(value = "/work/list/{id}", method = RequestMethod.GET)
+  public Object getId(@PathVariable(value = "id") Integer WorkkId) {
+	  Object  theWorkk= new WorkkDaoImpl().findidd(WorkkId);	
+	return  theWorkk;
+  }
+  @RequestMapping(value = "/workk/lis/{id}", method = RequestMethod.GET)
+  public List<Workk> getByI(@PathVariable(value = "id") Integer id) {
+      return workk.findTitleById(id); 
 }
+  }
