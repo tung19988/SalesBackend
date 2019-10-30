@@ -25,6 +25,7 @@ public class Comment_cusApi {
 	public List<Comment_cus> list() {	  
 		return comc.findAll();
 }
+	//abc
   @RequestMapping(value = "/Commentc/list", method = RequestMethod.POST )
   public  Comment_cus add( @RequestBody Comment_cus cmt) {
       return  comc.save(cmt);
