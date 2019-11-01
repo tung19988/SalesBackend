@@ -1,6 +1,10 @@
 package com.entyti;
 
+
+import java.io.Serializable;
+
 import java.util.Collection;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +20,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cus")
@@ -32,13 +38,45 @@ public class Customer {
     @Column(name = "user_cus")
     private String  userCus;
     @Column(name = "content")
-    private String  content;
+
+    private String  content; 
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_com")
+    private List<Comment_cus> commCollec;
+    
+	public void setCommCollec(List<Comment_cus> commCollec) {
+		this.commCollec = commCollec;
+	}
+	public Customer(Integer idCus) {
+		
+		this.idCus = idCus;
+	}
+	
+	public Customer() {
+		super();
+	}
+	public Customer(Integer idCus, String nameCus, Integer phoneNum, String email, String stt, String userCus,
+			String passCus, String content, List<Comment_cus> commCollec) {
+		super();
+		this.idCus = idCus;
+		this.nameCus = nameCus;
+		this.phoneNum = phoneNum;
+		this.email = email;
+		this.stt = stt;
+		this.userCus = userCus;
+		this.passCus = passCus;
+		this.content = content;
+		this.commCollec = commCollec;
+	}
+
+//    private String  content;
     @Column(name = "pass_cus")
     private String  passCus;
     
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_comcus")
-    private Collection<CommentCus> idCommcus;
+    private Collection<Comment_cus> idCommcus;
     
      
 //	public List<CommentCus> getCommCollection() {
@@ -48,13 +86,14 @@ public class Customer {
 //		this.commCollection = commCollection;
 //	}
     
+
 	public Integer getIdCus() {
 		return idCus;
 	}
 //	public List<CommentCus> getIdCommcus() {
 //		return idCommcus;
 //	}
-	public void setIdCommcus(Collection<CommentCus> idCommcus) {
+	public void setIdCommcus(Collection<Comment_cus> idCommcus) {
 		this.idCommcus = idCommcus;
 	}
 	public void setIdCus(Integer idCus) {
@@ -102,14 +141,21 @@ public class Customer {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	@Override
 	public String toString() {
-		return "Customer [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+
+		return "Customer [idCus=" + idCus + ", nameCus=" + nameCus + ", phoneNum=" + phoneNum + ", email=" + email
+				+ ", stt=" + stt + ", userCus=" + userCus + ", passCus=" + passCus + ", content=" + content
+				+ ", commCollec=" + commCollec + "]";
+
+//		return "Customer [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+//				+ "]";
+
 	}
 
 
 	
-    
-    
+	
+
 }

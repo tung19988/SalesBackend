@@ -2,6 +2,8 @@ package com.entyti;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,10 +58,10 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Opportunity> opportunityCollection;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-    private Collection<Workk> workkC;
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private List<Workk> workkC;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
@@ -71,26 +73,71 @@ public class Employee implements Serializable {
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Decentraliza> dec;
+
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id_comemp")
+    private List<Comment_emp> commCollection;
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private List<Emp_work> id;
+    
+    
+//    public List<Comment_emp> getCommCollection() {
+//		return commCollection;
+//	}
+
+//	public List<Emp_work> getId() {
+//		return id;
+//	}
+
+	public void setId(List<Emp_work> id) {
+		this.id = id;
+	}
+
+	public void setCommCollection(List<Comment_emp> commCollection) {
+		this.commCollection = commCollection;
+	}
+
+	public Employee() {
+	}
     
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Note> noteCollection;
-    public Employee() {
-    }
+//    public Employee() {
+//
+//    }
 
     public Employee(Integer idEmpl) {
         this.idEmpl = idEmpl;
     }
 
-    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass ) {
-        this.idEmpl = idEmpl;
-        this.nameEmpl = nameEmpl;
-        this.userr = userr;
-        this.pass = pass;
-    }
 
-    public Integer getIdEmpl() {
+ 
+
+    public Employee(Integer idEmpl, @NotNull String nameEmpl, Integer phoneNum, String email, Boolean stt,
+			String addresss, String dateOfBirth, @NotNull String userr, @NotNull String pass,
+			Collection<Opportunity> opportunityCollection, List<Workk> workkC, Collection<Decentraliza> dec,
+			List<Comment_emp> commCollection) {
+		super();
+		this.idEmpl = idEmpl;
+		this.nameEmpl = nameEmpl;
+		this.phoneNum = phoneNum;
+		this.email = email;
+		this.stt = stt;
+		this.addresss = addresss;
+		this.dateOfBirth = dateOfBirth;
+		this.userr = userr;
+		this.pass = pass;
+		this.opportunityCollection = opportunityCollection;
+		this.workkC = workkC;
+		this.dec = dec;
+		this.commCollection = commCollection;
+	}
+
+	public Integer getIdEmpl() {
         return idEmpl;
     }
 
@@ -185,7 +232,7 @@ public class Employee implements Serializable {
 //        return workkC;
 //    }
 
-    public void setWorkkCollection(Collection<Workk> workkCollection) {
+    public void setWorkkCollection(List<Workk> workkCollection) {
         this.workkC = workkCollection;
     }
     
@@ -220,25 +267,25 @@ public class Employee implements Serializable {
 		this.dec = dec;
 	}
 
-	@Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idEmpl != null ? idEmpl.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Employee)) {
-            return false;
-        }
-        Employee other = (Employee) object;
-        if ((this.idEmpl == null && other.idEmpl != null) || (this.idEmpl != null && !this.idEmpl.equals(other.idEmpl))) {
-            return false;
-        }
-        return true;
-    }
+//	@Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idEmpl != null ? idEmpl.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Employee)) {
+//            return false;
+//        }
+//        Employee other = (Employee) object;
+//        if ((this.idEmpl == null && other.idEmpl != null) || (this.idEmpl != null && !this.idEmpl.equals(other.idEmpl))) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     @Override
     public String toString() {

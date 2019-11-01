@@ -1,7 +1,11 @@
 package com.entyti;
 
 import java.io.Serializable;
+
+import java.util.List;
+
 import java.util.Collection;
+
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,6 +24,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
+
 
 /**
  *
@@ -59,21 +65,44 @@ public class Workk implements Serializable {
 	@JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(optional = false)
     private Department idDepartment;
+
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Collection<Emp_work> idd;
+    
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id")
     private Collection<DecWork> iddw;
+    
+	public Workk() {
+    }
 
+	public Workk(Integer idWork, String workName, Boolean statuss, String prioritize) {
+		super();
+		this.idWork = idWork;
+		this.workName = workName;
+		this.statuss = statuss;
+		this.prioritize = prioritize;
+	}
+
+
+
+	public Workk(Employee idEmpl) {
+		super();
+		this.idEmpl = idEmpl;
+	}
+
+	public void setIdd(Collection<Emp_work> idd) {
+		this.idd = idd;
+	}
+
+	
+	public Workk(Integer idWork) {
+        this.idWork = idWork;
+        }
 
 	public void setIddw(Collection<DecWork> iddw) {
 		this.iddw = iddw;
-	}
-
-	public Workk() {
-    }
-	
-    public Workk(Integer idWork) {
-		super();
-		this.idWork = idWork;
 	}
 
 	

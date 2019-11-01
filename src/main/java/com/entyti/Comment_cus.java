@@ -1,5 +1,7 @@
 package com.entyti;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "comment_cus")
-public class CommentCus {
-	   	@Id
+public class Comment_cus implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id_comcus")
-	    private Integer idCommcus;
+	    private Integer idCom;
 	    @Column(name = "note")
 	    private String note;
 	    @Column(name = "appointment_time")
@@ -26,19 +30,15 @@ public class CommentCus {
 	    private String datee;
 	    @Column(name = "icon")
 	    private String icon;
-	    
-	    @JoinColumn(name = "id_cus", referencedColumnName = "id_cus")
+		@JoinColumn(name = "id_cus", referencedColumnName = "id_cus")
 	    @ManyToOne(optional = false)
 	    private Customer idCus;
-
-
-	    
-		public Integer getIdCommcus() {
-			return idCommcus;
+		public Integer getIdCom() {
+			return idCom;
 		}
 
-		public void setIdCommcus(Integer idCommcus) {
-			this.idCommcus = idCommcus;
+		public void setIdCom(Integer idCom) {
+			this.idCom = idCom;
 		}
 
 		public String getNote() {
@@ -65,7 +65,6 @@ public class CommentCus {
 			this.icon = icon;
 		}
 
-	
 		public Customer getIdCus() {
 			return idCus;
 		}
@@ -74,10 +73,17 @@ public class CommentCus {
 			this.idCus = idCus;
 		}
 
+		public String getContactTime() {
+			return contactTime;
+		}
+
+		public void setContactTime(String contactTime) {
+			this.contactTime = contactTime;
+		}
+
 		@Override
 		public String toString() {
-			return "CommentCus [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+			return "Comment_cus [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 					+ super.toString() + "]";
-		}
-	    
+		}    
 }

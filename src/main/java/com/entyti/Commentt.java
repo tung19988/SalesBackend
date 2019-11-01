@@ -21,15 +21,67 @@ public class Commentt implements Serializable {
 	    private Integer idComment;
 	    @Column(name = "note")
 	    private String note;
+	    @Column(name = "appointment_time")
+	    private String appointmentTime;
+	    @Column(name = "contact_time")
+	    private String contactTime;
+	    @Column(name = "datee")
+	    private String datee;
+	    @Column(name = "icon")
+	    private String icon;
 	    
 	    @JoinColumn(name = "id_opportunity", referencedColumnName = "id_opportunity")
 	    @ManyToOne(optional = false)
 	    private Opportunity idOppo;
+	    
+	   
+		public String getIcon() {
+			return icon;
+		}
+
+
+		public void setIcon(String icon) {
+			this.icon = icon;
+		}
+
 
 		public Commentt() {
 			super();
 		}
 		
+
+		
+		public String getAppointmentTime() {
+			return appointmentTime;
+		}
+
+
+		public void setAppointmentTime(String appointmentTime) {
+			this.appointmentTime = appointmentTime;
+		}
+
+
+		public String getContactTime() {
+			return contactTime;
+		}
+
+
+		public void setContactTime(String contactTime) {
+			this.contactTime = contactTime;
+		}
+
+
+		public String getDatee() {
+			return datee;
+		}
+
+
+		public void setDatee(String datee) {
+			this.datee = datee;
+		}
+
+
+
 		public Commentt(Integer idComment, String note, Opportunity idOppo) {
 			super();
 			this.idComment = idComment;
@@ -65,10 +117,10 @@ public class Commentt implements Serializable {
 			return serialVersionUID;
 		}
 
+
 		@Override
 		public String toString() {
-			return "Commentt [idComment=" + idComment + ", note=" + note + ", idOppo=" + idOppo + "]";
-		}
-
-	    
+			return "Commentt [idComment=" + idComment + ", note=" + note + ", appointmentTime=" + appointmentTime
+					+ ", contactTime=" + contactTime + ", datee=" + datee + ", idOppo=" + idOppo + "]";
+		}	    
 }

@@ -34,6 +34,7 @@ public class HibernateUtil {
 //	                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 
 	                configuration.setProperties(settings);
+	                configuration.addAnnotatedClass(Commentt.class);
 	                configuration.addAnnotatedClass(Workk.class);
 	                configuration.addAnnotatedClass(Commentt.class);
 	                configuration.addAnnotatedClass(Opportunity.class);
