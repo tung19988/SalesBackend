@@ -76,7 +76,7 @@ public class Customer implements Serializable {
     
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_comcus")
-    private Collection<CommentCus> idCommcus;
+    private Collection<Comment_cus> idCommcus;
     
      
 //	public List<CommentCus> getCommCollection() {
@@ -93,7 +93,7 @@ public class Customer implements Serializable {
 //	public List<CommentCus> getIdCommcus() {
 //		return idCommcus;
 //	}
-	public void setIdCommcus(Collection<CommentCus> idCommcus) {
+	public void setIdCommcus(Collection<Comment_cus> idCommcus) {
 		this.idCommcus = idCommcus;
 	}
 	public void setIdCus(Integer idCus) {

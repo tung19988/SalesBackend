@@ -25,6 +25,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
+
 /**
  *
  * @author Admin
@@ -54,33 +56,23 @@ public class Workk implements Serializable {
 
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id")
-    private List<Emp_work> id;
-
-    public Workk() {
+    private Collection<Emp_work> idd;
+    
+    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Collection<DecWork> iddw;
+    
+	public Workk() {
     }
-    
-    
-//    public List<Emp_work> getId() {
-//		return id;
-//	}
 
-
-	public void setId(List<Emp_work> id) {
-		this.id = id;
-	}
-
-
-	public Workk(Integer idWork, String workName, Boolean statuss, String prioritize, Employee idEmpl,
-			Department idDepartment, List<Emp_work> id) {
+	public Workk(Integer idWork, String workName, Boolean statuss, String prioritize) {
 		super();
 		this.idWork = idWork;
 		this.workName = workName;
 		this.statuss = statuss;
 		this.prioritize = prioritize;
-		this.idEmpl = idEmpl;
-		this.idDepartment = idDepartment;
-		this.id = id;
 	}
+
 
 
 	public Workk(Employee idEmpl) {
@@ -88,26 +80,18 @@ public class Workk implements Serializable {
 		this.idEmpl = idEmpl;
 	}
 
+	public void setIdd(Collection<Emp_work> idd) {
+		this.idd = idd;
+	}
+
+	
 	public Workk(Integer idWork) {
-        this.idWork = idWork;}
-
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
-    private Collection<DecWork> iddw;
-
+        this.idWork = idWork;
+        }
 
 	public void setIddw(Collection<DecWork> iddw) {
 		this.iddw = iddw;
 	}
-
-//	public Workk() {
-//
-//    }
-//	
-//    public Workk(Integer idWork) {
-//		super();
-//		this.idWork = idWork;
-//	}
 
 	
     public Integer getIdWork() {

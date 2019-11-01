@@ -75,7 +75,7 @@ public class Employee implements Serializable {
     private Collection<Decentraliza> dec;
 
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_com")
+    @JoinColumn(name="id_comemp")
     private List<Comment_emp> commCollection;
     
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
@@ -115,14 +115,7 @@ public class Employee implements Serializable {
     }
 
 
-    public Employee(Integer idEmpl, String nameEmpl, String userr, String pass ) {
-        this.idEmpl = idEmpl;
-        this.nameEmpl = nameEmpl;
-        this.userr = userr;
-        this.pass = pass;
-    }
-
-
+ 
 
     public Employee(Integer idEmpl, @NotNull String nameEmpl, Integer phoneNum, String email, Boolean stt,
 			String addresss, String dateOfBirth, @NotNull String userr, @NotNull String pass,

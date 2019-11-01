@@ -17,10 +17,10 @@ public class Comment_emp implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	   @Id
+	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id_com")
-	    private Integer idComment;
+	    @Column(name = "id_comemp")
+	    private Integer idCommente;
 	    @Column(name = "note")
 	    private String note;
 	    @Column(name = "appointment_time")
@@ -36,12 +36,37 @@ public class Comment_emp implements Serializable {
 	    @ManyToOne(optional = false)
 	    private Employee idEmpl;
 
-		public Integer getIdComment() {
-			return idComment;
+	
+
+		public Comment_emp(Integer idComment) {
+			super();
+			this.idCommente = idComment;
 		}
 
-		public void setIdComment(Integer idComment) {
-			this.idComment = idComment;
+		public Comment_emp() {
+			super();
+		}
+
+		public Comment_emp(Integer idComment, String note, String appointmentTime, String contactTime, String datee,
+				String icon, Employee idEmpl) {
+			super();
+			this.idCommente = idComment;
+			this.note = note;
+			this.appointmentTime = appointmentTime;
+			this.contactTime = contactTime;
+			this.datee = datee;
+			this.icon = icon;
+			this.idEmpl = idEmpl;
+		}
+		 
+		
+	
+		public Integer getIdCommente() {
+			return idCommente;
+		}
+
+		public void setIdCommente(Integer idCommente) {
+			this.idCommente = idCommente;
 		}
 
 		public String getNote() {

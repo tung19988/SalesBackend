@@ -18,7 +18,7 @@ public class Comment_cus implements Serializable {
 	private static final long serialVersionUID = 1L;
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id_com")
+	    @Column(name = "id_comcus")
 	    private Integer idCom;
 	    @Column(name = "note")
 	    private String note;
