@@ -1,7 +1,9 @@
 package com.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -48,7 +50,7 @@ public class DecWorkApi {
 		}
 	  
 	  @RequestMapping(value = "/dw/list", method = RequestMethod.GET)
-	  public Optional<DecWork> ew() {	  
+	  public Optional<List<DecWork>> ew() {	  
 			return dew.E();
 	}
 }

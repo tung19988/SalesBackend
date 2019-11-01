@@ -44,7 +44,19 @@ public class Workk implements Serializable {
     @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
     @ManyToOne(optional = false)
     private Employee idEmpl;
-    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
+    public Workk(Integer idWork, String workName, Boolean statuss, String prioritize, Employee idEmpl,
+			Department idDepartment, Collection<DecWork> iddw) {
+		super();
+		this.idWork = idWork;
+		this.workName = workName;
+		this.statuss = statuss;
+		this.prioritize = prioritize;
+		this.idEmpl = idEmpl;
+		this.idDepartment = idDepartment;
+		this.iddw = iddw;
+	}
+
+	@JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(optional = false)
     private Department idDepartment;
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
