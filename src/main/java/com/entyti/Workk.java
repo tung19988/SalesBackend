@@ -32,13 +32,13 @@ public class Workk implements Serializable {
     @Column(name = "prioritize")
     private String prioritize;
     @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Employee idEmpl;
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Department idDepartment;
     @JoinColumn(name = "assigner", referencedColumnName = "id_empl")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Employee assignerr;
 
 

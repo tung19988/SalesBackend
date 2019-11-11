@@ -31,7 +31,7 @@ public class Commentt implements Serializable {
 	    private String icon;
 	    
 	    @JoinColumn(name = "id_opportunity", referencedColumnName = "id_opportunity")
-	    @ManyToOne(optional = false)
+	    @ManyToOne()
 	    private Opportunity idOppo;
 	    
 	   

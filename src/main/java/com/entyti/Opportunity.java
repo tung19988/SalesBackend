@@ -62,12 +62,12 @@ public class Opportunity implements Serializable {
 //    @ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 //    @JoinColumn(name="id_empl")
 	@JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Employee idEmpl;
 
 
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_com")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idOppo")
+//    @JoinColumn(name="id_com")
 
     private List<Commentt> commCollection;
     

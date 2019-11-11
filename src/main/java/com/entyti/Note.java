@@ -20,14 +20,13 @@ public class Note implements Serializable {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id_note")
 	    private Integer idNote;
-	    @NotNull
 	    @Column(name = "note")
 	    private String note;
 	    @Column(name = "datee")
 	    private String date;
 	    
 	    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-	    @ManyToOne(optional = false)
+	    @ManyToOne()
 	    private Employee idEmpl;
 
 		public Note() {

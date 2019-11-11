@@ -33,7 +33,7 @@ public class Comment_emp implements Serializable {
 	    private String icon;
 	    
 	    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-	    @ManyToOne(optional = false)
+	    @ManyToOne()
 	    private Employee idEmpl;
 
 	

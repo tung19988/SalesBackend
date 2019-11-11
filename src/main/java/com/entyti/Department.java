@@ -26,10 +26,10 @@ public class Department implements Serializable {
     private Integer idDepartment;
     @Column(name = "department_name")
     private String departmentName;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_department")
+    @OneToMany(cascade=CascadeType.ALL,mappedBy ="idDepartment" )
+//    @JoinColumn(name="id_department")
     private List<Workk> workkCollection;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idDepartment")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "idDepartment")
     private List<Employee> listEmployee ;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
     

@@ -53,31 +53,31 @@ public class Employee implements Serializable {
     @NotNull
     @Column(name = "pass")
     private String pass;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
+    @OneToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "idEmpl")
+//    @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Opportunity> opportunityCollection;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    @OneToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "idEmpl")
     private List<Workk> workkC;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
 //    private Collection<Department> departmentCollection;
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Department idDepartment;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
 //    private Collection<Decentraliza> dec;
 
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_comemp")
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "idEmpl")
+//    @JoinColumn(name="id_comemp")
     private List<Comment_emp> commCollection;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignerr")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "assignerr")
     private List<Workk> listAssigner ;
     
     
@@ -109,9 +109,9 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
     
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
     private Collection<Note> noteCollection;
 //    public Employee() {
 //

@@ -41,8 +41,8 @@ public class Customer implements Serializable {
 
     private String  content; 
     
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_com")
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "idCus")
+//    @JoinColumn(name="id_com")
     private List<Comment_cus> commCollec;
     
 	public void setCommCollec(List<Comment_cus> commCollec) {
@@ -74,8 +74,8 @@ public class Customer implements Serializable {
     @Column(name = "pass_cus")
     private String  passCus;
     
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_comcus")
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "idCus")
+//    @JoinColumn(name="id_comcus")
     private Collection<Comment_cus> idCommcus;
     
      

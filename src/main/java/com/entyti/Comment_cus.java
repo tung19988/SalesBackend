@@ -31,7 +31,7 @@ public class Comment_cus implements Serializable {
 	    @Column(name = "icon")
 	    private String icon;
 		@JoinColumn(name = "id_cus", referencedColumnName = "id_cus")
-	    @ManyToOne(optional = false)
+	    @ManyToOne()
 	    private Customer idCus;
 		public Integer getIdCom() {
 			return idCom;
