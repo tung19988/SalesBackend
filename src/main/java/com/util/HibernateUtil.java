@@ -8,7 +8,6 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.entyti.Commentt;
 import com.entyti.Customer;
-import com.entyti.Decentraliza;
 import com.entyti.Department;
 import com.entyti.Employee;
 import com.entyti.Opportunity;
@@ -31,7 +30,7 @@ public class HibernateUtil {
 	                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 	                settings.put(Environment.SHOW_SQL, "true");
 	                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-//	                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+	                settings.put(Environment.HBM2DDL_AUTO, "update");
 
 	                configuration.setProperties(settings);
 	                configuration.addAnnotatedClass(Commentt.class);
@@ -40,7 +39,6 @@ public class HibernateUtil {
 	                configuration.addAnnotatedClass(Opportunity.class);
 	                configuration.addAnnotatedClass(Employee.class);
 	                configuration.addAnnotatedClass(Department.class);
-	                configuration.addAnnotatedClass(Decentraliza.class);
 	                configuration.addAnnotatedClass(Customer.class);
 	                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 	                    .applySettings(configuration.getProperties()).build();
