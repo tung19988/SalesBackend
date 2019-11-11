@@ -1,7 +1,6 @@
 package com.entyti;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,9 +28,11 @@ public class Department implements Serializable {
     private String departmentName;
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_department")
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
     private List<Workk> workkCollection;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idDepartment")
+    private List<Employee> listEmployee ;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
+    
 //    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
 //    @ManyToOne
 
@@ -55,16 +56,13 @@ public class Department implements Serializable {
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
 //    private Collection<Employee> employeeCollection;
 
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_department")
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_department")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-    private Collection<Decentraliza> dec;
+//    private Collection<Decentraliza> dec;
 
     public Department() {
     }
-    public void setDec(Collection<Decentraliza> dec) {
-		this.dec = dec;
-	}
     public Department(Integer idDepartment) {
         this.idDepartment = idDepartment;
     }
@@ -72,8 +70,11 @@ public class Department implements Serializable {
     public Integer getIdDepartment() {
         return idDepartment;
     }
-
-    public void setIdDepartment(Integer idDepartment) {
+    
+	public void setListEmployee(List<Employee> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
+	public void setIdDepartment(Integer idDepartment) {
         this.idDepartment = idDepartment;
     }
 

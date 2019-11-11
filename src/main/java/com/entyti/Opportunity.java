@@ -84,8 +84,30 @@ public class Opportunity implements Serializable {
 
     public Opportunity() {
     }
-
+    
+    
    
+
+	public Opportunity(Integer idOpportunity, String cusName, String email, Integer phoneNum, String proName,
+			Integer amountt, Double price, String dateOfPurchase, String delivery, String sources, String stt,
+			Double totalMoney, String shopName, Employee idEmpl, List<Commentt> commCollection) {
+		super();
+		this.idOpportunity = idOpportunity;
+		this.cusName = cusName;
+		this.email = email;
+		this.phoneNum = phoneNum;
+		this.proName = proName;
+		this.amountt = amountt;
+		this.price = price;
+		this.dateOfPurchase = dateOfPurchase;
+		this.delivery = delivery;
+		this.sources = sources;
+		this.stt = stt;
+		this.totalMoney = totalMoney;
+		this.shopName = shopName;
+		this.idEmpl = idEmpl;
+		this.commCollection = commCollection;
+	}
 
 	@Override
 	public String toString() {

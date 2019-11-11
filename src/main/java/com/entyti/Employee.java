@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -37,9 +37,8 @@ public class Employee implements Serializable {
     private String nameEmpl;
     @Column(name = "phone_num")
     private Integer phoneNum;
-//    @Column(name = "levell")
-//    private String levell;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Column(name = "levell")
+    private String levell;
     @Column(name = "email")
     private String email;
     @Column(name = "stt")
@@ -66,21 +65,25 @@ public class Employee implements Serializable {
 //    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
 //    private Collection<Department> departmentCollection;
-//    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-//    @ManyToOne(optional = false)
-//    private Department idDepartment;
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id_empl")
+    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
+    @ManyToOne(optional = false)
+    private Department idDepartment;
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id_empl")
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-    private Collection<Decentraliza> dec;
+//    private Collection<Decentraliza> dec;
 
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name="id_comemp")
     private List<Comment_emp> commCollection;
     
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
-    private List<Emp_work> id;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignerr")
+    private List<Workk> listAssigner ;
+    
+    
+//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+//    @JoinColumn(name="id")
+//    private List<Emp_work> id;
     
     
 //    public List<Comment_emp> getCommCollection() {
@@ -91,12 +94,16 @@ public class Employee implements Serializable {
 //		return id;
 //	}
 
-	public void setId(List<Emp_work> id) {
-		this.id = id;
-	}
-
 	public void setCommCollection(List<Comment_emp> commCollection) {
 		this.commCollection = commCollection;
+	}
+	
+	public String getLevell() {
+		return levell;
+	}
+
+	public void setLevell(String levell) {
+		this.levell = levell;
 	}
 
 	public Employee() {
@@ -114,13 +121,14 @@ public class Employee implements Serializable {
         this.idEmpl = idEmpl;
     }
 
+	public void setListAssigner(List<Workk> listAssigner) {
+		this.listAssigner = listAssigner;
+	}
 
- 
-
-    public Employee(Integer idEmpl, @NotNull String nameEmpl, Integer phoneNum, String email, Boolean stt,
+	public Employee(Integer idEmpl, @NotNull String nameEmpl, Integer phoneNum, String email, Boolean stt,
 			String addresss, String dateOfBirth, @NotNull String userr, @NotNull String pass,
-			Collection<Opportunity> opportunityCollection, List<Workk> workkC, Collection<Decentraliza> dec,
-			List<Comment_emp> commCollection) {
+			Collection<Opportunity> opportunityCollection, List<Workk> workkC,
+			List<Comment_emp> commCollection,List<Workk> listAssigner) {
 		super();
 		this.idEmpl = idEmpl;
 		this.nameEmpl = nameEmpl;
@@ -133,8 +141,8 @@ public class Employee implements Serializable {
 		this.pass = pass;
 		this.opportunityCollection = opportunityCollection;
 		this.workkC = workkC;
-		this.dec = dec;
 		this.commCollection = commCollection;
+		this.listAssigner=listAssigner;
 	}
 
 	public Integer getIdEmpl() {
@@ -262,10 +270,8 @@ public class Employee implements Serializable {
 	public void setNoteCollection(Collection<Note> noteCollection) {
 		this.noteCollection = noteCollection;
 	}
-
-	public void setDec(Collection<Decentraliza> dec) {
-		this.dec = dec;
-	}
+	
+	
 
 //	@Override
 //    public int hashCode() {
@@ -287,7 +293,15 @@ public class Employee implements Serializable {
 //        return true;
 //    }
 
-    @Override
+    public Department getIdDepartment() {
+		return idDepartment;
+	}
+
+	public void setIdDepartment(Department idDepartment) {
+		this.idDepartment = idDepartment;
+	}
+
+	@Override
     public String toString() {
         return "entyti.Employee[ idEmpl=" + idEmpl + " ]";
     }
