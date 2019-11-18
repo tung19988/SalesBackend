@@ -1,28 +1,25 @@
 package com.controller;
 
-import java.util.Collection;
+
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dao.CustomerDaoImpl;
+
 import com.dao.WorkkDaoImpl;
-import com.entyti.Customer;
+import com.entyti.Department;
+import com.entyti.Employee;
 import com.entyti.Workk;
 import com.service.WorkkRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 
@@ -60,8 +57,22 @@ public class WorkkApi {
 	  Object  theWorkk= new WorkkDaoImpl().findidd(WorkkId);	
 	return  theWorkk;
   }
-  @RequestMapping(value = "/workk/lis/{id}", method = RequestMethod.GET)
-  public List<Workk> getByI(@PathVariable(value = "id") Integer id) {
-      return workk.findTitleById(id); 
-}
+//trưởng phòng Xem được công việc của phòng ban nó
+  @RequestMapping(value = "/workk/vw1/{id}", method = RequestMethod.GET)
+  public List<Workk> managerVW(@PathVariable(value = "id") Department id) {
+      return workk.managerViewWork(id); 
   }
+  
+  //Nhân viên thì xem được công việc của từng nhân viên đó
+  @RequestMapping(value = "/workk/vw2/{id}", method = RequestMethod.GET)
+  public List<Workk> emplVW(@PathVariable(value = "id") Employee id) {
+      return workk.emplViewWork(id); 
+  }
+  
+  //admin,truongphong xem việc đã giao 
+  @RequestMapping(value = "/workk/ww/{id}", method = RequestMethod.GET)
+  public List<Workk> adWW(@PathVariable(value = "id") Employee id) {
+      return workk.adminWatchWork(id); 
+  }
+  
+}

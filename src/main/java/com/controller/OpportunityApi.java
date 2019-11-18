@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.entyti.Employee;
 import com.entyti.Opportunity;
 import com.entyti.Workk;
 import com.service.OpportunityRepository;
@@ -47,8 +48,9 @@ public class OpportunityApi {
 		        }).orElse(ResponseEntity.notFound().build());
 		}
 	 
-	 @RequestMapping(value = "/oppor/list/{stt}", method = RequestMethod.GET)
-	  public Optional<Integer> getById(@PathVariable(value = "stt") String stt) {
-	      return opp.selectStt(stt); 
+	//tổng doanh thu của nhân viên
+	 @RequestMapping(value = "/oppor/tr", method = RequestMethod.GET)
+	  public List<Opportunity> totalRe() {
+	      return opp.totalRevenue();
 	  }
 }

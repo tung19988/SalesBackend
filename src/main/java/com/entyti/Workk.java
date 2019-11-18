@@ -2,15 +2,16 @@ package com.entyti;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 /**
  *
  * @author Admin
@@ -35,8 +36,8 @@ public class Workk implements Serializable {
     @ManyToOne()
     private Employee idEmpl;
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
-    @ManyToOne()
-    private Department idDepartment;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Department idDepartment ;
     @JoinColumn(name = "assigner", referencedColumnName = "id_empl")
     @ManyToOne()
     private Employee assignerr;
