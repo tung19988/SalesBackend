@@ -1,7 +1,9 @@
 package com.entyti;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,49 +23,30 @@ import javax.persistence.Table;
 
 public class Department implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_department")
     private Integer idDepartment;
     @Column(name = "department_name")
     private String departmentName;
-    @OneToMany(cascade=CascadeType.ALL,mappedBy ="idDepartment" )
-//    @JoinColumn(name="id_department")
-    private List<Workk> workkCollection;
+
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "idDepartment")
     private List<Employee> listEmployee ;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
     
-//    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
-//    @ManyToOne
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(
+            name = "work_de", 
+            joinColumns = { @JoinColumn(name = "id_department") }, 
+            inverseJoinColumns = { @JoinColumn(name = "id_work") } )
+        private Set<Workk> idWork = new HashSet<>() ; 
 
-//    private Employee idEmpl;
-
-//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_empl")
-//    private List<Employee> employeeC;
     
-//    public List<Employee> getEmployeeC() {
-//		return employeeC;
-//	}
-//
-//	public void setEmployeeC(List<Employee> employeeC) {
-//		this.employeeC = employeeC;
-//	}
+    
 
-	//    private Employee idEmpl;
-//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_department")
-   // @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
-//    private Collection<Employee> employeeCollection;
-
-//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_department")
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-//    private Collection<Decentraliza> dec;
-
-    public Department() {
+	public void setIdWork(Set<Workk> idWork) {
+		this.idWork = idWork;
+	}
+	public Department() {
     }
     public Department(Integer idDepartment) {
         this.idDepartment = idDepartment;
@@ -91,9 +76,9 @@ public class Department implements Serializable {
 //        return workkCollection;
 //    }
 
-    public void setWorkkCollection(List<Workk> workkCollection) {
-        this.workkCollection = workkCollection;
-    }
+//    public void setWorkkCollection(List<Workk> workkCollection) {
+//        this.workkCollection = workkCollection;
+//    }
 
 //    public Employee getIdEmpl() {
 //        return idEmpl;

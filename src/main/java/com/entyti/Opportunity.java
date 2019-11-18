@@ -109,10 +109,7 @@ public class Opportunity implements Serializable {
 		this.commCollection = commCollection;
 	}
 
-	@Override
-	public String toString() {
-		return "Opportunity [getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
-	}
+	
 
 	public Opportunity(Integer idOpportunity) {
         this.idOpportunity = idOpportunity;
@@ -251,6 +248,15 @@ public class Opportunity implements Serializable {
         }
         return true;
     }
+
+	@Override
+	public String toString() {
+		return "Opportunity [idOpportunity=" + idOpportunity + ", cusName=" + cusName + ", email=" + email
+				+ ", phoneNum=" + phoneNum + ", proName=" + proName + ", amountt=" + amountt + ", price=" + price
+				+ ", dateOfPurchase=" + dateOfPurchase + ", delivery=" + delivery + ", sources=" + sources + ", stt="
+				+ stt + ", totalMoney=" + totalMoney + ", shopName=" + shopName + ", idEmpl=" + idEmpl
+				+ ", commCollection=" + commCollection + "]";
+	}
 
 	
 

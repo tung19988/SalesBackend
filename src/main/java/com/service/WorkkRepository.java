@@ -9,6 +9,6 @@ import com.entyti.Workk;
 
 public interface WorkkRepository extends JpaRepository<Workk, Integer> {
 
-	 @Query("SELECT w FROM Workk  w  where  w.idEmpl.idEmpl= ?1 ")
-	 List<Workk>  findTitleById(Integer id);
+//	 @Query("SELECT w FROM Workk  w  where  w.idEmpl.idEmpl= ?1 ")
+//	 List<Workk>  findTitleById(Integer id);
 }

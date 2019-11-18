@@ -60,8 +60,8 @@ public class WorkkApi {
 	  Object  theWorkk= new WorkkDaoImpl().findidd(WorkkId);	
 	return  theWorkk;
   }
-  @RequestMapping(value = "/workk/lis/{id}", method = RequestMethod.GET)
-  public List<Workk> getByI(@PathVariable(value = "id") Integer id) {
-      return workk.findTitleById(id); 
-}
+//  @RequestMapping(value = "/workk/lis/{id}", method = RequestMethod.GET)
+//  public List<Workk> getByI(@PathVariable(value = "id") Integer id) {
+//      return workk.findTitleById(id); 
+//}
   }

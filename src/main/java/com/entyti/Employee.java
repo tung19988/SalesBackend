@@ -2,7 +2,9 @@ package com.entyti;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,7 +31,7 @@ import javax.validation.constraints.NotNull;
 
 public class Employee implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empl")
@@ -59,8 +63,8 @@ public class Employee implements Serializable {
     private Collection<Opportunity> opportunityCollection;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
-    @OneToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "idEmpl")
-    private List<Workk> workkC;
+//    @OneToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "idEmpl")
+//    private List<Workk> workkC;
 //    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //    @JoinColumn(name="id_empl")
 //    @OneToMany(mappedBy = "idEmpl")
@@ -80,19 +84,30 @@ public class Employee implements Serializable {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "assignerr")
     private List<Workk> listAssigner ;
     
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(
+        name = "work_em", 
+        joinColumns = { @JoinColumn(name = "id_empl") }, 
+        inverseJoinColumns = { @JoinColumn(name = "id_work") } )
+    private Set<Workk> idWork = new HashSet<>() ; 
     
-//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//    @JoinColumn(name="id")
-//    private List<Emp_work> id;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
+    private Collection<Note> noteCollection;
+  
     
-    
-//    public List<Comment_emp> getCommCollection() {
-//		return commCollection;
-//	}
+	public Employee() {
+		super();
+	}
 
-//	public List<Emp_work> getId() {
-//		return id;
-//	}
+	public Employee(Integer idEmpl) {
+		super();
+		this.idEmpl = idEmpl;
+	}
+
+
+	public void setIdWork(Set<Workk> idWork) {
+		this.idWork = idWork;
+	}
 
 	public void setCommCollection(List<Comment_emp> commCollection) {
 		this.commCollection = commCollection;
@@ -105,45 +120,12 @@ public class Employee implements Serializable {
 	public void setLevell(String levell) {
 		this.levell = levell;
 	}
-
-	public Employee() {
-	}
+ 
     
-//    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_empl")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpl")
-    private Collection<Note> noteCollection;
-//    public Employee() {
-//
-//    }
-
-    public Employee(Integer idEmpl) {
-        this.idEmpl = idEmpl;
-    }
-
 	public void setListAssigner(List<Workk> listAssigner) {
 		this.listAssigner = listAssigner;
 	}
 
-	public Employee(Integer idEmpl, @NotNull String nameEmpl, Integer phoneNum, String email, Boolean stt,
-			String addresss, String dateOfBirth, @NotNull String userr, @NotNull String pass,
-			Collection<Opportunity> opportunityCollection, List<Workk> workkC,
-			List<Comment_emp> commCollection,List<Workk> listAssigner) {
-		super();
-		this.idEmpl = idEmpl;
-		this.nameEmpl = nameEmpl;
-		this.phoneNum = phoneNum;
-		this.email = email;
-		this.stt = stt;
-		this.addresss = addresss;
-		this.dateOfBirth = dateOfBirth;
-		this.userr = userr;
-		this.pass = pass;
-		this.opportunityCollection = opportunityCollection;
-		this.workkC = workkC;
-		this.commCollection = commCollection;
-		this.listAssigner=listAssigner;
-	}
 
 	public Integer getIdEmpl() {
         return idEmpl;
@@ -240,9 +222,9 @@ public class Employee implements Serializable {
 //        return workkC;
 //    }
 
-    public void setWorkkCollection(List<Workk> workkCollection) {
-        this.workkC = workkCollection;
-    }
+//    public void setWorkkCollection(List<Workk> workkCollection) {
+//        this.workkC = workkCollection;
+//    }
     
     
 
@@ -301,9 +283,9 @@ public class Employee implements Serializable {
 		this.idDepartment = idDepartment;
 	}
 
-	@Override
-    public String toString() {
-        return "entyti.Employee[ idEmpl=" + idEmpl + " ]";
-    }
+//	@Override
+//    public String toString() {
+//        return "entyti.Employee[ idEmpl=" + idEmpl + " ]";
+//    }
     
 }

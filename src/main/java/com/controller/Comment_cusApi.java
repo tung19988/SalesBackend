@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +23,10 @@ public class Comment_cusApi {
 	Comment_cusRepository comc;
 	
 	@RequestMapping(value = "/Commentc/list", method = RequestMethod.GET)
-	public List<Comment_cus> list() {	  
+	public Collection<Comment_cus> list() {	  
 		return comc.findAll();
 }
-	//abc
+	
   @RequestMapping(value = "/Commentc/list", method = RequestMethod.POST )
   public  Comment_cus add( @RequestBody Comment_cus cmt) {
       return  comc.save(cmt);
