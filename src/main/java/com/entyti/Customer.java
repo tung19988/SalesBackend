@@ -42,7 +42,7 @@ public class Customer implements Serializable {
     private String  content; 
     
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "idCus")
-//    @JoinColumn(name="id_com")
+
     private List<Comment_cus> commCollec;
     
 	public void setCommCollec(List<Comment_cus> commCollec) {
@@ -70,7 +70,7 @@ public class Customer implements Serializable {
 		this.commCollec = commCollec;
 	}
 
-//    private String  content;
+
     @Column(name = "pass_cus")
     private String  passCus;
     
@@ -79,20 +79,12 @@ public class Customer implements Serializable {
     private Collection<Comment_cus> idCommcus;
     
      
-//	public List<CommentCus> getCommCollection() {
-//		return commCollection;
-//	}
-//	public void setCommCollection(List<CommentCus> commCollection) {
-//		this.commCollection = commCollection;
-//	}
-    
+
 
 	public Integer getIdCus() {
 		return idCus;
 	}
-//	public List<CommentCus> getIdCommcus() {
-//		return idCommcus;
-//	}
+
 	public void setIdCommcus(Collection<Comment_cus> idCommcus) {
 		this.idCommcus = idCommcus;
 	}
@@ -148,14 +140,7 @@ public class Customer implements Serializable {
 		return "Customer [idCus=" + idCus + ", nameCus=" + nameCus + ", phoneNum=" + phoneNum + ", email=" + email
 				+ ", stt=" + stt + ", userCus=" + userCus + ", passCus=" + passCus + ", content=" + content
 				+ ", commCollec=" + commCollec + "]";
-
-//		return "Customer [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-//				+ "]";
-
 	}
 
-
-	
-	
 
 }

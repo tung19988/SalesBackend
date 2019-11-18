@@ -1,6 +1,8 @@
 package com.entyti;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
@@ -32,40 +36,67 @@ public class Workk implements Serializable {
     private Boolean statuss;
     @Column(name = "prioritize")
     private String prioritize;
+<<<<<<< HEAD
     @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
     @ManyToOne()
     private Employee idEmpl;
     @JoinColumn(name = "id_department", referencedColumnName = "id_department")
     @ManyToOne(fetch = FetchType.EAGER)
     private Department idDepartment ;
+=======
+//    @JoinColumn(name = "id_empl", referencedColumnName = "id_empl")
+//    @ManyToOne()
+//    private Employee idEmpl;
+//    @JoinColumn(name = "id_department", referencedColumnName = "id_department")
+//    @ManyToOne()
+//    private Department idDepartment;
+    @ManyToMany()
+    @JoinTable(
+        name = "work_de", 
+        joinColumns = { @JoinColumn(name = "id_work") }, 
+        inverseJoinColumns = { @JoinColumn(name = "id_department") }
+        )
+    private Set<Department> idDepartment = new HashSet<>() ; 
+    
+    @ManyToMany()
+    @JoinTable(
+        name = "work_em", 
+        joinColumns = { @JoinColumn(name = "id_work") }, 
+        inverseJoinColumns = { @JoinColumn(name = "id_empl") }
+        )
+    private Set<Employee> idEmpl = new HashSet<>() ; 
+   
+    
+>>>>>>> 0bb2606b83d087b02d3af6638179d3d82b6f7858
     @JoinColumn(name = "assigner", referencedColumnName = "id_empl")
     @ManyToOne()
     private Employee assignerr;
 
-
     
-    
-	public Workk() {
-    }
-
-	public Workk(Integer idWork, String workName, Boolean statuss, String prioritize) {
-		super();
-		this.idWork = idWork;
-		this.workName = workName;
-		this.statuss = statuss;
-		this.prioritize = prioritize;
+	public Set<Employee> getIdEmpl() {
+		return idEmpl;
 	}
 
-
-
-	public Workk(Employee idEmpl) {
-		super();
+	public void setIdEmpl(Set<Employee> idEmpl) {
 		this.idEmpl = idEmpl;
 	}
 
+	public Set<Department> getIdDepartment() {
+		return idDepartment;
+	}
+
+	public void setIdDepartment(Set<Department> idDepartment) {
+		this.idDepartment = idDepartment;
+	}
+
+	public Workk() {
+    }
+
 	public Workk(Integer idWork) {
-        this.idWork = idWork;
-        }
+		super();
+		this.idWork = idWork;
+	}
+
 
     public Integer getIdWork() {
         return idWork;
@@ -107,21 +138,6 @@ public class Workk implements Serializable {
         this.prioritize = prioritize;
     }
 
-    public Department getIdDepartment() {
-        return idDepartment;
-    }
-
-    public void setIdDepartment(Department idDepartment) {
-        this.idDepartment = idDepartment;
-    }
-
-    public Employee getIdEmpl() {
-        return idEmpl;
-    }
-
-    public void setIdEmpl(Employee idEmpl) {
-        this.idEmpl = idEmpl;
-    }
 
     @Override
     public int hashCode() {

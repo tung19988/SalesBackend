@@ -57,6 +57,7 @@ public class WorkkApi {
 	  Object  theWorkk= new WorkkDaoImpl().findidd(WorkkId);	
 	return  theWorkk;
   }
+<<<<<<< HEAD
 //trưởng phòng Xem được công việc của phòng ban nó
   @RequestMapping(value = "/workk/vw1/{id}", method = RequestMethod.GET)
   public List<Workk> managerVW(@PathVariable(value = "id") Department id) {
@@ -67,6 +68,12 @@ public class WorkkApi {
   @RequestMapping(value = "/workk/vw2/{id}", method = RequestMethod.GET)
   public List<Workk> emplVW(@PathVariable(value = "id") Employee id) {
       return workk.emplViewWork(id); 
+=======
+//  @RequestMapping(value = "/workk/lis/{id}", method = RequestMethod.GET)
+//  public List<Workk> getByI(@PathVariable(value = "id") Integer id) {
+//      return workk.findTitleById(id); 
+//}
+>>>>>>> 0bb2606b83d087b02d3af6638179d3d82b6f7858
   }
   
   //admin,truongphong xem việc đã giao 

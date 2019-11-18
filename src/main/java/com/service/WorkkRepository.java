@@ -10,6 +10,7 @@ import com.entyti.Workk;
 
 public interface WorkkRepository extends JpaRepository<Workk, Integer> {
 
+<<<<<<< HEAD
 	
 	//trưởng phòng Xem được công việc của phòng ban nó
 	 @Query(value = "(SELECT w.* FROM Workk w , Employee e where  w.id_empl=e.id_empl and e.id_department = ?1) union (SELECT w.* FROM Workk w where w.id_department=?1)" , nativeQuery = true)
@@ -23,4 +24,8 @@ public interface WorkkRepository extends JpaRepository<Workk, Integer> {
 	 @Query("SELECT w FROM Workk w where w.assignerr=?1")
 	 List<Workk> adminWatchWork (Employee id);
 	
+=======
+//	 @Query("SELECT w FROM Workk  w  where  w.idEmpl.idEmpl= ?1 ")
+//	 List<Workk>  findTitleById(Integer id);
+>>>>>>> 0bb2606b83d087b02d3af6638179d3d82b6f7858
 }

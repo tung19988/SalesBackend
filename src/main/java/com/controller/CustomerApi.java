@@ -32,8 +32,8 @@ public List<Customer> list (){
 	return cus.findAll();
 }
 @RequestMapping(value = "/cus/list", method = RequestMethod.POST)
-public List<Customer> addCustomer(@Valid @RequestBody List<Customer> Customer) {
-    return  cus.saveAll(Customer);
+public Customer addCustomer( @RequestBody Customer Customer) {
+    return  cus.save(Customer);
 }
 
 @RequestMapping(value = "/cus/list/{id}", method = RequestMethod.GET)
